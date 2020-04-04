@@ -1,0 +1,5 @@
+venv/
+Procfile
+requirements.txt
+.DS_Store
+__pycache__/
