@@ -2,7 +2,7 @@
 
 NUS IT3011
 
-To run flask interface, execute 
+To run text->emoji interface, execute 
 ```
 $ export FLASK_APP=application.py
 $ flask run
