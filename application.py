@@ -17,19 +17,19 @@ label_emoji_mapping = {0: '😂', 1: '❤', 2: '😍', 3: '😭', 4: '😊', 5: 
 lstm_clf = load_model('LSTM_model2.h5')
 
 
-application = Flask(__name__)
-application.config['SECRET_KEY'] = 'MLFun'
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'MLFun'
 
 class ReviewForm(Form):
     text = TextAreaField(' ', [validators.DataRequired(), validators.length(min=10)])
 
-@application.route('/')
-@application.route('/index')
+@app.route('/')
+@app.route('/index')
 def index():
     form = ReviewForm(request.form)
     return render_template('form.html', form=form)
 
-@application.route('/results', methods=['POST'])
+@app.route('/results', methods=['POST'])
 def results():
     form = ReviewForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -51,5 +51,5 @@ def results():
     return render_template('form.html', form=form)
 
 if __name__ == "__main__":
-  application.run()
+  app.run()
 
