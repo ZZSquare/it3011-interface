@@ -21,7 +21,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'MLFun'
 
 class ReviewForm(Form):
-    text = TextAreaField('Enter text here:', [validators.DataRequired(), validators.length(min=10)])
+    text = TextAreaField(' ', [validators.DataRequired(), validators.length(min=10)])
 
 @app.route('/')
 @app.route('/index')
@@ -43,7 +43,7 @@ def results():
         for x in labels[:,0]:
             emojis.append(label_emoji_mapping[x])
 
-        emojis = '   '.join(emojis)
+        emojis = '\t'.join(emojis)
 
         return render_template('results.html',
                                 content=review,
