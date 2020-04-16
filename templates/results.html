@@ -1,8 +1,18 @@
 <style>
-    .container {
-        padding: 20px;
+    body {
+        background-image: url({{ url_for('static', filename='back.png') }});
+        background-attachment: fixed;
+        background-color: transparent;
     }
 
+    .container {
+        padding: 20px 40px;
+    }
+
+    h2 {
+        font-size: 32px;
+        font-family: monaco;
+    }
 </style>
 
 <!doctype html>
@@ -14,13 +24,12 @@
 
     <body style="background-color: #fffefd;">
         <div class="container">
-            <p><a href="/index">Back to Home</a></p>
+            <h2><div>{{ content }}</div></h2>
             <br>
-            <h3>Your text:</h3>
-            <div>{{ content }}</div>
+            <h2><div>Suggested emojis are: <strong>{{ prediction }}</strong></div><h2>
             <br>
-            <h3>Prediction:</h3>
-            <div>Suggested emojis are: <strong>{{ prediction }}</strong></div>
+            <br>
+            <p style="font-size:26px;"><a href='/index'>Let's do it again!</a></p>
         </div>
 </body>
 

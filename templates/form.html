@@ -1,8 +1,23 @@
 <style>
-    .container {
-        padding: 20px;
+    body {
+        background-image: url({{ url_for('static', filename='back.png') }});
+        background-attachment: fixed;
+        background-color: transparent;
     }
-    
+
+    .container {
+        padding: 20px 40px;
+    }
+
+    h2 {
+        font-size: 40px;
+        font-family: monaco;
+    }
+
+    .formcontrol input[type="text"]
+    {
+        font-size:24px;
+    }
 </style>
 
 
@@ -11,16 +26,16 @@
     <head>
         <title>Emoji Generation</title>
     </head>
-    <body style="background-color: #fffefd;">
+    <body>
         <div class="container">
             <h2> Welcome to the Text to Emoji Generator!</h2>
-            <p style="font-size: 18px;">Please enter text in the textbox below and see if we can accurately
+            <p style="font-size: 18px; font-family:monaco;">Please enter text in the textbox below and see if we can accurately
             process its meaning with emojis!</p>
             
             {% from "_formhelpers.html" import render_field %}
             
             <form method=post action="/results">
-                {{ render_field(form.text, cols='50', rows='10') }}
+                {{ render_field(form.text, cols='170', rows='20', placeholder="Enter your text here!") }}
                 <br>
                 <input type=submit value='Submit' name='submit_btn'>
             </form>

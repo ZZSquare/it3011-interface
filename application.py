@@ -1,7 +1,7 @@
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from wtforms import Form, TextAreaField, validators
 import sys, os
 
@@ -21,7 +21,7 @@ application = Flask(__name__)
 application.config['SECRET_KEY'] = 'MLFun'
 
 class ReviewForm(Form):
-    text = TextAreaField('Enter text here:', [validators.DataRequired(), validators.length(min=10)])
+    text = TextAreaField(' ', [validators.DataRequired(), validators.length(min=10)])
 
 @application.route('/')
 @application.route('/index')
@@ -43,7 +43,7 @@ def results():
         for x in labels[:,0]:
             emojis.append(label_emoji_mapping[x])
 
-        emojis = '   '.join(emojis)
+        emojis = '\t\t'.join(emojis)
 
         return render_template('results.html',
                                 content=review,
